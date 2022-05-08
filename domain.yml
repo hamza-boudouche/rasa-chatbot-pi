@@ -1,0 +1,91 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - add_event
+  - add_task
+  - get_task
+
+entities:
+  - time
+  - end_time
+  - event_title
+  - description
+  - task_title
+
+slots:
+  time:
+    type: any
+    mappings: 
+    - type: from_entity
+      entity: time
+  end_time:
+    type: any
+    mappings: 
+    - type: from_entity
+      entity: end_time
+  description:
+    type: text
+    mappings: 
+    - type: from_entity
+      entity: description
+  event_title:
+    type: text
+    mappings: 
+    - type: from_entity
+      entity: event_title
+
+forms:
+  add_event_form:
+    required_slots:
+      - time
+      - event_title
+      - description
+
+
+responses:
+  utter_greet:
+    - text: "Hey! How can I help you?"
+
+  # utter_cheer_up:
+  #   - text: "Here is something to cheer you up:"
+  #     image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  # utter_did_that_help:
+  #   - text: "Did that help you?"
+
+  utter_happy:
+    - text: "Great, carry on!"
+
+  utter_goodbye:
+    - text: "Bye"
+
+  utter_iamabot:
+    - text: "I am a bot, powered by Rasa."
+
+  # utter_ask_add_event_form_time:
+  #   - text: "event starts at?"
+
+  # utter_ask_add_event_form_end_time:
+  #   - text: "event ends at?"
+
+  # utter_ask_add_event_form_event_title:
+  #   - text: "the event's title?"
+
+  # utter_ask_add_event_form_description:
+  #   - text: "the event's description?"
+
+actions:
+  - action_confirm_add_event
+  - action_add_event
+  - action_add_event_test
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

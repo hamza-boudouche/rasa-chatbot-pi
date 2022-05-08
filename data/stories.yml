@@ -1,0 +1,35 @@
+version: "3.1"
+
+stories:
+
+# - story: add event
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: add_event
+#   - action: add_event_form
+#   - active_loop: add_event_form
+#   - active_loop: null
+#   - action: action_confirm_add_event
+#   - intent: affirm
+#   - action: utter_greet
+#   - action: action_add_event
+#   - action: utter_happy
+
+- story: add event check
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: add_event
+  - action: action_confirm_add_event
+  - intent: affirm
+  - action: action_add_event
+  - action: utter_greet
+  - intent: goodbye
+
+- story: test
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: affirm
+  - action: utter_happy

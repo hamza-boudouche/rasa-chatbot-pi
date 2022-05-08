@@ -1,0 +1,129 @@
+version: "3.1"
+
+nlu:
+  - intent: greet
+    examples: |
+      - hey
+      - hello
+      - hi
+      - hello there
+      - good morning
+      - good evening
+      - hey there
+      - let's go
+      - hey dude
+      - goodmorning
+      - goodevening
+      - good afternoon
+
+  - intent: goodbye
+    examples: |
+      - cu
+      - good by
+      - cee you later
+      - good night
+      - bye
+      - goodbye
+      - have a nice day
+      - see you around
+      - bye bye
+      - see you later
+
+  - intent: affirm
+    examples: |
+      - yes
+      - y
+      - indeed
+      - of course
+      - that sounds good
+      - correct
+      - okay
+      - ok
+      - okey 
+      - k
+
+  # - intent: deny
+  #   examples: |
+  #     - no
+  #     - n
+  #     - never
+  #     - I don't think so
+  #     - don't like that
+  #     - no way
+  #     - not really
+  #     - nop
+
+  # - intent: mood_great
+  #   examples: |
+  #     - perfect
+  #     - great
+  #     - amazing
+  #     - feeling like a king
+  #     - wonderful
+  #     - I am feeling very good
+  #     - I am great
+  #     - I am amazing
+  #     - I am going to save the world
+  #     - super stoked
+  #     - extremely good
+  #     - so so perfect
+  #     - so good
+  #     - so perfect
+
+  # - intent: mood_unhappy
+  #   examples: |
+  #     - my day was horrible
+  #     - I am sad
+  #     - I don't feel very well
+  #     - I am disappointed
+  #     - super sad
+  #     - I'm so sad
+  #     - sad
+  #     - very sad
+  #     - unhappy
+  #     - not good
+  #     - not very good
+  #     - extremly sad
+  #     - so saad
+  #     - so sad
+
+  - intent: bot_challenge
+    examples: |
+      - are you a bot?
+      - are you a human?
+      - am I talking to a bot?
+      - am I talking to a human?
+
+  - intent: add_task
+    examples: |
+      - add a task due tomorrow at 10am and assign it to [hamza boudouche](employee)
+      - insert a new task in trello for [soufiane boujida](employee) due next week
+      - create a new task for [amal derouich](employee) with the deadline monday at 1pm
+      - can you add a task due next friday and assign it to [hamza boudouche](employee)
+      - create a task due today at 10am for [hamza bouduche](employee)
+
+  - intent: get_task
+    examples: |
+      - get me all tasks
+      - get me all tasks due before tomorrow at 10am
+      - show tasks due before next monday for [hamza boudouche](employee)
+      - look for the tasks assigned to [hamza boudouche](employee) that are due before next monday
+      - what are the tasks that [hamza boudouche](employee) has, and that are due for next monday
+      - what tasks does [hamza boudouche](employee) have, and that are due for tomorrow
+      - fetch the tasks that are due next friday and that are assigned to [hamza boudouche](employee)
+
+  - intent: add_event
+    examples: |
+      - add an event for starting tomorrow at 10am and ending tomorrow at 11am
+      - insert a new event for next monday
+      - create a new meeting for friday at 2pm
+      - can you add a reunion on next thursday 
+      - create a meeting for today at 8am
+
+  - lookup: employee
+    examples: |
+      - hamza boudouche
+      - soufiane boujida
+      - amal derouich
+      - oussama bouzekraoui
+      - wissal akki
