@@ -11,3 +11,58 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+- rule: Say assigned 
+  condition:
+  - active_loop: add_task_form
+  steps:
+  - action: add_task_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_assigned
+  - action: action_reset_all_slots
+
+- rule: Say removed
+  condition:
+  - active_loop: remove_task_form
+  steps:
+  - action: remove_task_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_removed
+  - action: action_reset_all_slots
+
+- rule: Add a member
+  condition:
+  - active_loop: add_employee_form
+  steps:
+  - action: add_employee_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_added
+  - action: action_reset_all_slots
+
+- rule: Move a card 
+  condition:
+  - active_loop: move_task_form
+  steps:
+  - action: move_task_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_moved
+  - action: action_reset_all_slots
+
+- rule: Get stocks
+  condition:
+  - active_loop: get_stocks_form
+  steps:
+  - action: get_stocks_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_stocks_found 
+  - action: action_reset_all_slots

@@ -11,6 +11,12 @@ intents:
   - add_event
   - add_task
   - get_task
+  - get_stocks
+  - write_mail
+  - send_mail
+  - remove_task 
+  - add_employee 
+  - move_task
 
 entities:
   - time
@@ -18,10 +24,17 @@ entities:
   - event_title
   - description
   - task_title
+  - employee
+  - stocks
+  - board
+  - list
+  - card
+
 
 slots:
   time:
     type: any
+    influence_conversation: false
     mappings: 
     - type: from_entity
       entity: time
@@ -40,6 +53,35 @@ slots:
     mappings: 
     - type: from_entity
       entity: event_title
+  employee: 
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: employee
+  board:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: board
+  list:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: list
+  card:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: card
+  stocks: 
+    type: text
+    mappings:
+    - type: from_entity
+      entity: stocks
 
 forms:
   add_event_form:
@@ -47,6 +89,37 @@ forms:
       - time
       - event_title
       - description
+  add_task_form:
+    required_slots: 
+      - board
+      - list
+      - card
+      - employee
+      - time 
+
+  remove_task_form:
+    required_slots:
+      - board
+      - list
+      - employee 
+      - card
+  
+  add_employee_form:
+    required_slots:
+      - board
+      - employee 
+  
+  move_task_form:
+    required_slots:
+      - board 
+      - card
+      - list 
+  
+  get_stocks_form:
+    required_slots:
+      - stocks
+      - time 
+    
 
 
 responses:
@@ -63,8 +136,8 @@ responses:
   utter_happy:
     - text: "Great, carry on!"
 
-  utter_goodbye:
-    - text: "Bye"
+ # utter_goodbye:
+ #   - text: "Bye"
 
   utter_iamabot:
     - text: "I am a bot, powered by Rasa."
@@ -81,10 +154,40 @@ responses:
   # utter_ask_add_event_form_description:
   #   - text: "the event's description?"
 
+
+
+  utter_ask_employee:
+    - text: "Which employee?"
+  utter_ask_card:
+    - text: "What is the card's title ?"
+  utter_ask_list:
+    - text: "Which list ?"
+  utter_ask_board:
+    - text: "What is your board ?"
+  utter_ask_time: 
+    - text: "for what time ?"
+  utter_ask_description:
+    - text: "what is the card's description ?"
+  utter_ask_stocks:
+    - text: "what is the company's name ?"
+  utter_removed:
+    - text: "I have removed {card} from your {board}"
+  utter_assigned:
+    - text : "I assigned your task to {employee} on {board} "
+  utter_added: 
+    - text: "I have added {employee}"
+  utter_moved:
+    - text: "I have moved {card} to {list} "
+
+  utter_stocks_found:
+    - text: "These are today's stock variations"
+
+    
 actions:
   - action_confirm_add_event
   - action_add_event
   - action_add_event_test
+  - action_reset_all_slots
 
 session_config:
   session_expiration_time: 60

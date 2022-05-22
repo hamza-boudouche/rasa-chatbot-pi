@@ -1,0 +1,28 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-employee",
+      "2": "I-employee",
+      "3": "L-employee",
+      "4": "U-employee",
+      "5": "B-stocks",
+      "6": "I-stocks",
+      "7": "L-stocks",
+      "8": "U-stocks",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-employee": 1,
+      "I-employee": 2,
+      "L-employee": 3,
+      "U-employee": 4,
+      "B-stocks": 5,
+      "I-stocks": 6,
+      "L-stocks": 7,
+      "U-stocks": 8,
+      "O": 0
+    },
+    "num_tags": 9
+  }
+]
