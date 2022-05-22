@@ -41,7 +41,7 @@ policies:
   - name: MemoizationPolicy
   - name: RulePolicy
   - name: UnexpecTEDIntentPolicy
-    max_history: 5
+    max_history: 6
     epochs: 100
   - name: TEDPolicy
     max_history: 5

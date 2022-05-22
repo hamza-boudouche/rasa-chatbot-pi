@@ -2,6 +2,7 @@ from typing import Any, Text, Dict, List
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk.events import AllSlotsReset
 
 from communication import send
 
@@ -32,3 +33,11 @@ class ActionAddEvent(Action):
         dispatcher.utter_message(text="adding event")
         dispatcher.utter_message(json_message={"requestForm": True})
         return []
+
+class ActionResetAllSlots(Action):
+
+    def name(self):
+        return "action_reset_all_slots"
+
+    def run(self, dispatcher, tracker, domain):
+         return [AllSlotsReset()]

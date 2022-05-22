@@ -99,8 +99,9 @@ nlu:
       - add a task due tomorrow at 10am and assign it to [hamza boudouche](employee)
       - insert a new task in trello for [soufiane boujida](employee) due next week
       - create a new task for [amal derouich](employee) with the deadline monday at 1pm
-      - can you add a task due next friday and assign it to [hamza boudouche](employee)
+      - can you add a task due next friday and assign it to [wissal akki](employee)
       - create a task due today at 10am for [hamza bouduche](employee)
+      - I want to add a task to trello
 
   - intent: get_task
     examples: |
@@ -111,6 +112,27 @@ nlu:
       - what are the tasks that [hamza boudouche](employee) has, and that are due for next monday
       - what tasks does [hamza boudouche](employee) have, and that are due for tomorrow
       - fetch the tasks that are due next friday and that are assigned to [hamza boudouche](employee)
+      - I want to get my task from [Trello test](board)
+      - I want to get a task from Trello
+
+  - intent : remove_task 
+    examples: |
+      - I want to remove a task in [Trello test](board)
+      - remove all cards from [Done](list) in [Trello test](board)
+      - I want to remove a task
+
+  - intent : add_employee
+    examples: |
+      - I want to add an employee to board in trello
+      - add [amal derouich](employee) to [Trello test](board)
+  
+  - intent : move_task 
+    examples: |
+      - I want to move a task 
+      - move task [Connect to trello api](card) to [Done](list)
+      
+
+
 
   - intent: add_event
     examples: |
@@ -120,6 +142,37 @@ nlu:
       - can you add a reunion on next thursday 
       - create a meeting for today at 8am
 
+  - intent : get_stocks
+    examples : |
+      - get me stocks of [GOOG](stocks) for today 
+      - I want to know [MSFT](stocks) stocks at the moment 
+      - can you download stocks for me ?
+      - save today stocks for me 
+      - stocks for today 
+
+  - intent : write_mail 
+    examples : |
+      - write me a mail to [hamza boudouche](employee)
+      - can you write me a mail to [amal derouich](employee)
+  
+
+  - intent : send_mail 
+    examples : |
+      - send the mail to [hamza boudouche](employee) asap
+      - send the following mail to [amal derouich](employee)
+      - send [soufiane boujida](employee) a mail telling them we have a meeting in 15 minutes.
+    
+
+
+  - lookup: stocks
+    examples: |
+      - GOOG
+      - MSFT
+      - YAHOO
+    
+
+
+
   - lookup: employee
     examples: |
       - hamza boudouche
@@ -127,3 +180,18 @@ nlu:
       - amal derouich
       - oussama bouzekraoui
       - wissal akki
+
+  - lookup: board
+    examples: |
+      - Trello test
+  
+  - lookup: list 
+    examples: |
+      - Done 
+      - In Progress
+      - To Do 
+  
+  - lookup: card 
+    examples: |
+      - Connect to trello api 
+      
