@@ -34,6 +34,37 @@ class ActionAddEvent(Action):
         dispatcher.utter_message(json_message={"requestForm": True})
         return []
 
+class ActionAddTask(Action):
+    def name(self) -> Text:
+        return "action_add_task"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        print("adding task")
+        dispatcher.utter_message(text="adding task")
+        dispatcher.utter_message(json_message={"formtype": "add_task"})
+        return []  
+
+
+class ActionRemoveTask(Action):
+    def name(self) -> Text:
+        return "action_remove_task"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        print("removing task")
+        dispatcher.utter_message(text="removing task")
+        dispatcher.utter_message(json_message={"formtype": "remove_task"}) 
+        return [] 
+
+class ActionMoveTask(Action):
+    def name(self) -> Text:
+        return "action_move_task"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        print("moving task")
+        dispatcher.utter_message(text="moving task")
+        dispatcher.utter_message(json_message={"formtype": "move_task"})
+        return [] 
+
 class ActionResetAllSlots(Action):
 
     def name(self):

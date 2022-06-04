@@ -34,21 +34,48 @@ stories:
   - intent: affirm
   - action: utter_happy
 
-- story : add_task
-  steps :
-  - intent : greet 
-  - action : utter_greet
-  - intent : add_task
-  - action : add_task_form
-  - active_loop: add_task_form
+#- story : add_task
+ # steps :
+  #- intent : greet 
+  #- action : utter_greet
+  #- intent : add_task
+  #- action : add_task_form
+  #- active_loop: add_task_form
 
-- story : remove task 
-  steps :
+- story : add_task_front 
+  steps : 
   - intent : greet
   - action : utter_greet
+  - intent : add_task
+  - action : action_add_task
+  - action : utter_affirm_add_task 
+  - intent : affirm 
+
+- story: remove_task_front 
+  steps : 
   - intent : remove_task
-  - action : remove_task_form
-  - active_loop: remove_task_form
+  - action : action_remove_task
+  - action : utter_affirm_removed_task 
+  - intent : affirm 
+
+
+- story: move_task_front 
+  steps :
+  - intent : move_task
+  - action : action_move_task
+  - action : utter_affirm_move_task 
+  - intent : affirm 
+
+
+
+
+
+#- story : remove task 
+ # steps :
+
+ # - intent : remove_task
+ # - action : remove_task_form
+ # - active_loop: remove_task_form
 
 - story: add member 
   steps : 
@@ -58,11 +85,11 @@ stories:
   - action : add_employee_form
   - active_loop: add_employee_form
 
-- story: move task
-  steps :
-  - intent : move_task
-  - action: move_task_form
-  - active_loop: move_task_form
+#- story: move task
+ # steps :
+ # - intent : move_task
+ # - action: move_task_form
+ # - active_loop: move_task_form
 
 - story: get stock 
   steps :

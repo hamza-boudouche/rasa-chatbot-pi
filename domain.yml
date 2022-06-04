@@ -181,6 +181,12 @@ responses:
 
   utter_stocks_found:
     - text: "These are today's stock variations"
+  utter_affirm_removed_task :
+    - text: "Task removed successfully "
+  utter_affirm_add_task :
+    - text: "Task added successfully "
+  utter_affirm_move_task : 
+    - text: " Task moved successfully "
 
     
 actions:
@@ -188,6 +194,9 @@ actions:
   - action_add_event
   - action_add_event_test
   - action_reset_all_slots
+  - action_add_task
+  - action_move_task
+  - action_remove_task
 
 session_config:
   session_expiration_time: 60

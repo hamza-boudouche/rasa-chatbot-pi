@@ -120,6 +120,10 @@ nlu:
       - I want to remove a task in [Trello test](board)
       - remove all cards from [Done](list) in [Trello test](board)
       - I want to remove a task
+      - remove task from trello 
+      - delete task from trello
+      - I want to delete a task 
+      - how to delete task 
 
   - intent : add_employee
     examples: |
@@ -130,7 +134,10 @@ nlu:
     examples: |
       - I want to move a task 
       - move task [Connect to trello api](card) to [Done](list)
-      
+      - move a task for me 
+      - task move 
+      - get in trello and move task 
+
 
 
 
