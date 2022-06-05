@@ -1,8 +1,0 @@
-{
-  "rule_only_slots": [],
-  "rule_only_loops": [
-    "add_task_form",
-    "move_task_form",
-    "remove_task_form"
-  ]
-}

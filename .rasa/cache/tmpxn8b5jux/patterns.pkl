@@ -1,6 +1,0 @@
-[
-  {
-    "name": "employee",
-    "pattern": "(\\bhamza\\ boudouche\\b|\\bsoufiane\\ boujida\\b|\\bamal\\ derouich\\b|\\boussama\\ bouzekraoui\\b|\\bwissal\\ akki\\b)"
-  }
-]
