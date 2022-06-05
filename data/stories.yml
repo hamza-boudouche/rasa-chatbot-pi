@@ -65,7 +65,6 @@ stories:
   - action : action_confirm_update_task
   - intent : affirm
   - action : action_update_task
-  - action : utter_affirm_update_task 
   - intent : affirm 
 
 - story: move_task_front
@@ -89,6 +88,35 @@ stories:
   - action: action_add_event
   - intent: affirm
 
+- story: get_event_front
+  steps : 
+  - intent: greet 
+  - action: utter_greet
+  - intent: get_event
+  - action: action_confirm_get_event
+  - intent: affirm
+  - action: action_get_event
+  - intent: affirm
+
+- story: update_event_front
+  steps : 
+  - intent: greet 
+  - action: utter_greet
+  - intent: update_event
+  - action: action_confirm_update_event
+  - intent: affirm
+  - action: action_update_event
+  - intent: affirm
+
+- story: delete_event_front
+  steps : 
+  - intent: greet 
+  - action: utter_greet
+  - intent: delete_event
+  - action: action_confirm_delete_event
+  - intent: affirm
+  - action: action_delete_event
+  - intent: affirm
 
 
 

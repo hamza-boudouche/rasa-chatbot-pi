@@ -155,6 +155,30 @@ nlu:
       - can you add a reunion on next thursday 
       - create a meeting for today at 8am
 
+  - intent: get_event
+    examples: |
+      - get me my schedule for 10am today
+      - I want to get my schedule at 8 am today 
+      - what are my schedule timings at 10 am ?
+      - do I have any events today ?
+
+  - intent: update_event 
+    examples: |
+      - modify my meeting at 10am 
+      - I want to update my schedule 
+      - update my schedule for me 
+      - change my meeting at 10 am to 12pm 
+      - I want to update my schedule
+
+  - intent: delete_event 
+    examples: |
+      - cancel my meeting at 12pm 
+      - cancel all my meetings 
+      - delete my schedule for the day 
+      - delete my event at 2 
+      - I want to delete a meeting 
+      - I want to delete an event 
+
   - intent : get_stocks
     examples : |
       - get me stocks of [GOOG](stocks) for today 
