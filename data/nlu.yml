@@ -138,7 +138,13 @@ nlu:
       - task move 
       - get in trello and move task 
 
-
+  - intent: update_task
+    examples: |
+      - I want to update a card 
+      - Change my card's description 
+      - move my card to another list
+      - add another employee to task 
+      - attach my document to my card
 
 
   - intent: add_event

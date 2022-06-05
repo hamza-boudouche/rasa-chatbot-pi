@@ -17,6 +17,7 @@ intents:
   - remove_task 
   - add_employee 
   - move_task
+  - update_task
 
 entities:
   - time
@@ -197,6 +198,11 @@ actions:
   - action_add_task
   - action_move_task
   - action_remove_task
+  - action_confirm_add_task
+  - action_confirm_remove_task
+  - action_confirm_update_task
+  - action_update_task
+  - action_confirm_move_task
 
 session_config:
   session_expiration_time: 60
