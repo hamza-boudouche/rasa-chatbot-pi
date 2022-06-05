@@ -2,30 +2,30 @@ version: "3.1"
 
 stories:
 
-- story: add event
-  steps:
-   - intent: greet
-   - action: utter_greet
-   - intent: add_event
-   - action: add_event_form
-   - active_loop: add_event_form
-   - active_loop: null
-   - action: action_confirm_add_event
-   - intent: affirm
-   - action: utter_greet
-   - action: action_add_event
-   - action: utter_happy
+#- story: add event
+ # steps:
+  # - intent: greet
+   #- action: utter_greet
+   #- intent: add_event
+   #- action: add_event_form
+   #- active_loop: add_event_form
+   #- active_loop: null
+   #- action: action_confirm_add_event
+   #- intent: affirm
+   #- action: utter_greet
+   #- action: action_add_event
+   #- action: utter_happy
 
-- story: add event check
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: add_event
-  - action: action_confirm_add_event
-  - intent: affirm
-  - action: action_add_event
-  - action: utter_greet
-  - intent: goodbye
+#- story: add event check
+ # steps:
+ # - intent: greet
+ # - action: utter_greet
+ # - intent: add_event
+ # - action: action_confirm_add_event
+ # - intent: affirm
+ # - action: action_add_event
+ # - action: utter_greet
+ # - intent: goodbye
 
 - story: test
   steps:
@@ -59,12 +59,35 @@ stories:
   - intent : affirm 
 
 
-- story: move_task_front 
+- story: update_task_front 
   steps :
-  - intent : move_task
-  - action : action_move_task
-  - action : utter_affirm_move_task 
+  - intent : update_task
+  - action : action_confirm_update_task
+  - intent : affirm
+  - action : action_update_task
+  - action : utter_affirm_update_task 
   - intent : affirm 
+
+- story: move_task_front
+  steps:
+  - intent : move_task
+  - action : action_confirm_move_task
+  - intent : affirm 
+  - action : action_move_task
+  - action : utter_affirm_move_task
+  - intent : affirm 
+
+
+
+- story: add_event_front
+  steps : 
+  - intent: greet 
+  - action: utter_greet
+  - intent: add_event
+  - action: action_confirm_add_event
+  - intent: affirm
+  - action: action_add_event
+  - intent: affirm
 
 
 
@@ -77,13 +100,8 @@ stories:
  # - action : remove_task_form
  # - active_loop: remove_task_form
 
-- story: add member 
-  steps : 
-  - intent : greet
-  - action : utter_greet
-  - intent : add_employee
-  - action : add_employee_form
-  - active_loop: add_employee_form
+
+
 
 #- story: move task
  # steps :
@@ -91,10 +109,18 @@ stories:
  # - action: move_task_form
  # - active_loop: move_task_form
 
-- story: get stock 
-  steps :
-  - intent : greet
-  - action : utter_greet
-  - intent : get_stocks
-  - action : get_stocks_form
-  - active_loop: get_stocks_form
+#- story: get stock 
+  #steps :
+  #- intent : greet
+  #- action : utter_greet
+  #- intent : get_stocks
+  #- action : get_stocks_form
+ # - active_loop: get_stocks_form
+ 
+# - story: add member 
+#   steps : 
+#   - intent : greet
+#   - action : utter_greet
+#   - intent : add_employee
+#   - action : add_employee_form
+#   - active_loop: add_employee_form
