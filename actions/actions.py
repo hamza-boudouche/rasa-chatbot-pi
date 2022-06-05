@@ -18,6 +18,39 @@ class ActionConfirmAddEvent(Action):
         dispatcher.utter_message(
             text="you are about to start the procedure to add an event, do you want to continue?")
 
+class ActionConfirmUpdateEvent(Action):
+
+    def name(self) -> Text:
+        return "action_confirm_update_event"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        print("confirm updating event")
+
+        dispatcher.utter_message(
+            text="you are about to start the procedure to update an event, do you want to continue?")
+
+class ActionConfirmGetEvent(Action):
+
+    def name(self) -> Text:
+        return "action_confirm_get_event"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        print("confirm getting event")
+
+        dispatcher.utter_message(
+            text="you are about to start the procedure to get an event, do you want to continue?")
+
+class ActionConfirmDeleteEvent(Action):
+
+    def name(self) -> Text:
+        return "action_confirm_delete_event"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        print("confirm deleting event")
+
+        dispatcher.utter_message(
+            text="you are about to start the procedure to delete an event, do you want to continue?")
+
 class ActionConfirmAddTask(Action):
 
     def name(self) -> Text:
@@ -73,6 +106,41 @@ class ActionAddEvent(Action):
         dispatcher.utter_message(text="adding event")
         dispatcher.utter_message(json_message={"formtype": "add_event"})
         return []
+
+class ActionGetEvent(Action):
+
+    def name(self) -> Text:
+        return "action_get_event"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        print("getting event")
+        dispatcher.utter_message(text="getting event")
+        dispatcher.utter_message(json_message={"formtype": "get-event"})
+        return []
+
+
+class ActionUpdateEvent(Action):
+
+    def name(self) -> Text:
+        return "action_update_event"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        print("updating event")
+        dispatcher.utter_message(text="updating event")
+        dispatcher.utter_message(json_message={"formtype": "update_event"})
+        return []
+
+class ActionDeleteEvent(Action):
+
+    def name(self) -> Text:
+        return "action_delete_event"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        print("deleting event")
+        dispatcher.utter_message(text="deleting event")
+        dispatcher.utter_message(json_message={"formtype": "delete_event"})
+        return []
+
 
 class ActionAddTask(Action):
     def name(self) -> Text:
