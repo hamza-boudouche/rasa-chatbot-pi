@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Rasa Core Visualisation</title>
+    <script src="https://dagrejs.github.io/project/dagre-d3/latest/dagre-d3.min.js"></script>
+    <script src="https://dagrejs.github.io/project/dagre/latest/dagre.min.js"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://dagrejs.github.io/project/graphlib-dot/v0.6.3/graphlib-dot.js"></script>
+</head>
+<body>
+<div id="errormsg" style="color: #b00"></div>
+<svg>
+    <style id="graph-style">
+        .node.invisible > rect {
+            display: none;
+        }
+
+        .node.start > rect {
+            fill: #7f7;
+            rx: 30;
+            ry: 18;
+        }
+
+        .node.end > rect {
+            fill: #f77;
+            rx: 30;
+            ry: 18;
+        }
+
+        .node:not(.active) > rect, .node:not(.active) > .label {
+            opacity: 0.4;
+        }
+
+        .edgePath:not(.active) path {
+            opacity: 0.4;
+        }
+
+        .node.ellipsis > rect {
+            fill: #CCC;
+        }
+
+        .node.intent > rect {
+            fill: #7ff;
+        }
+
+        .node.dashed > rect {
+            stroke-dasharray: 5;
+        }
+
+        text {
+            font-weight: 300;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serf, serif;
+            font-size: 14px;
+            color: #1f1d1d;
+        }
+
+        .node rect {
+            stroke: #444;
+            fill: #fff;
+            stroke-width: 1.5px;
+        }
+
+        .edgePath path {
+            stroke: #333;
+            stroke-width: 1.5px;
+        }
+
+        svg {
+            position: fixed;
+            top: 10px;
+            left: 0;
+            height: 100%;
+            width: 100%
+        }
+    </style>
+    <g></g>
+</svg>
+<script>
+
+  function serveGraph() {
+    let oldInputGraphValue;
+
+    const url = 'visualization.dot';
+    const refreshInterval = 500;
+
+    // trigger a refresh by fetching an updated graph
+    setInterval(function () {
+      fetch(url).then(r => r.text()).then(dot => {
+        document.getElementById('errormsg').innerHTML = '';
+        if (oldInputGraphValue === dot) return;
+
+        oldInputGraphValue = dot;
+        drawGraph(dot);
+      }).catch(err => {
+        document.getElementById('errormsg').innerHTML =
+          'Failed to update plot. (' + err.message + ')';
+      });
+    }, refreshInterval);
+  }
+
+  function drawGraph(graph) {
+    let g = graphlibDot.read(graph);
+    // Set margins, if not present
+    if (!g.graph().hasOwnProperty("marginx") &&
+      !g.graph().hasOwnProperty("marginy")) {
+      g.graph().marginx = 20;
+      g.graph().marginy = 20;
+    }
+    g.graph().transition = function (selection) {
+      return selection.transition().duration(300);
+    };
+    // Render the graph into svg g
+    d3.select("svg g").call(render, g);
+  }
+  // Set up zoom support
+  const svg = d3.select("svg"),
+    inner = d3.select("svg g"),
+    zoom = d3.zoom().on("zoom", function () {
+      inner.attr("transform", d3.event.transform);
+    });
+  svg.call(zoom);
+
+  // Create and configure the renderer
+  const render = dagreD3.render();
+
+  let isClient = false;
+  isClient = true;
+
+  if (isClient) {
+    // Mark all nodes and their edges as active
+    cssRules = document.getElementById('graph-style').sheet.cssRules;
+    cssRules[3].style.opacity = 1;
+    cssRules[4].style.opacity = 1;
+
+    let graph;
+    graph = `digraph  {
+0 [class="start active", fillcolor=green, fontsize=12, label=START, style=filled];
+"-1" [class=end, fillcolor=red, fontsize=12, label=END, style=filled];
+1 [class="", fontsize=12, label=action_confirm_update_task];
+2 [class="", fontsize=12, label=action_update_task];
+3 [class="", fontsize=12, label=action_confirm_move_task];
+4 [class="", fontsize=12, label=action_move_task];
+5 [class="", fontsize=12, label=utter_affirm_move_task];
+6 [class="", fontsize=12, label=utter_greet];
+7 [class="", fontsize=12, label=action_confirm_add_event];
+8 [class="", fontsize=12, label=action_add_event];
+10 [class="", fontsize=12, label=action_confirm_get_event];
+11 [class="", fontsize=12, label=action_get_event];
+13 [class="", fontsize=12, label=action_confirm_update_event];
+14 [class="", fontsize=12, label=action_update_event];
+16 [class="", fontsize=12, label=action_confirm_delete_event];
+17 [class="", fontsize=12, label=action_delete_event];
+19 [class="", fontsize=12, label=utter_happy];
+21 [class="", fontsize=12, label=action_add_task];
+22 [class="", fontsize=12, label=utter_affirm_add_task];
+23 [class="", fontsize=12, label=action_remove_task];
+24 [class="", fontsize=12, label=utter_affirm_removed_task];
+25 [class="", fontsize=12, label="..."];
+26 [class="", fontsize=12, label=utter_iamabot];
+28 [class="", fontsize=12, label=add_task_form];
+29 [class="", fontsize=12, label=utter_assigned];
+30 [class="", fontsize=12, label=action_reset_all_slots];
+32 [class="", fontsize=12, label=remove_task_form];
+33 [class="", fontsize=12, label=utter_removed];
+36 [class="", fontsize=12, label=add_employee_form];
+37 [class="", fontsize=12, label=utter_added];
+40 [class="", fontsize=12, label=move_task_form];
+41 [class="", fontsize=12, label=utter_moved];
+44 [class="", fontsize=12, label=get_stocks_form];
+45 [class="", fontsize=12, label=utter_stocks_found];
+47 [class=intent, fillcolor=lightblue, label="/update_task", shape=rect, style=filled];
+48 [class=intent, fillcolor=lightblue, label="/move_task", shape=rect, style=filled];
+49 [class=intent, fillcolor=lightblue, label=hey, shape=rect, style=filled];
+50 [class=intent, fillcolor=lightblue, label="/remove_task", shape=rect, style=filled];
+51 [class=intent, fillcolor=lightblue, label=indeed, shape=rect, style=filled];
+52 [class=intent, fillcolor=lightblue, label=correct, shape=rect, style=filled];
+53 [class=intent, fillcolor=lightblue, label=indeed, shape=rect, style=filled];
+54 [class=intent, fillcolor=lightblue, label=okey, shape=rect, style=filled];
+55 [class=intent, fillcolor=lightblue, label="create a meeting for today at 8am", shape=rect, style=filled];
+56 [class=intent, fillcolor=lightblue, label="/get_event", shape=rect, style=filled];
+57 [class=intent, fillcolor=lightblue, label="/update_event", shape=rect, style=filled];
+58 [class=intent, fillcolor=lightblue, label="/delete_event", shape=rect, style=filled];
+59 [class=intent, fillcolor=lightblue, label=yes, shape=rect, style=filled];
+60 [class=intent, fillcolor=lightblue, label="/add_task", shape=rect, style=filled];
+61 [class=intent, fillcolor=lightblue, label=okay, shape=rect, style=filled];
+62 [class=intent, fillcolor=lightblue, label="of course", shape=rect, style=filled];
+63 [class=intent, fillcolor=lightblue, label=okay, shape=rect, style=filled];
+64 [class=intent, fillcolor=lightblue, label=indeed, shape=rect, style=filled];
+65 [class=intent, fillcolor=lightblue, label=correct, shape=rect, style=filled];
+66 [class=intent, fillcolor=lightblue, label=ok, shape=rect, style=filled];
+67 [class=intent, fillcolor=lightblue, label=k, shape=rect, style=filled];
+68 [class=intent, fillcolor=lightblue, label=yes, shape=rect, style=filled];
+69 [class=intent, fillcolor=lightblue, label=correct, shape=rect, style=filled];
+70 [class=intent, fillcolor=lightblue, label=okay, shape=rect, style=filled];
+71 [class=intent, fillcolor=lightblue, label="/bot_challenge", shape=rect, style=filled];
+0 -> 25  [class="", key=NONE, label=""];
+0 -> 47  [class="", key=0];
+0 -> 48  [class="", key=0];
+0 -> 49  [class="", key=0];
+0 -> 50  [class="", key=0];
+1 -> 51  [class="", key=0];
+2 -> 52  [class="", key=0];
+3 -> 53  [class="", key=0];
+4 -> 5  [class="", key=NONE, label=""];
+5 -> 54  [class="", key=0];
+6 -> 55  [class="", key=0];
+6 -> 56  [class="", key=0];
+6 -> 57  [class="", key=0];
+6 -> 58  [class="", key=0];
+6 -> 59  [class="", key=0];
+6 -> 60  [class="", key=0];
+7 -> 61  [class="", key=0];
+8 -> 62  [class="", key=0];
+10 -> 63  [class="", key=0];
+11 -> 64  [class="", key=0];
+13 -> 65  [class="", key=0];
+14 -> 66  [class="", key=0];
+16 -> 67  [class="", key=0];
+17 -> 68  [class="", key=0];
+19 -> "-1"  [class="", key=NONE, label=""];
+21 -> 22  [class="", key=NONE, label=""];
+22 -> 69  [class="", key=0];
+23 -> 24  [class="", key=NONE, label=""];
+24 -> 70  [class="", key=0];
+25 -> 28  [class="", key=NONE, label=""];
+25 -> 32  [class="", key=NONE, label=""];
+25 -> 36  [class="", key=NONE, label=""];
+25 -> 40  [class="", key=NONE, label=""];
+25 -> 44  [class="", key=NONE, label=""];
+25 -> 71  [class="", key=0];
+26 -> "-1"  [class="", key=NONE, label=""];
+28 -> 29  [class="", key=NONE, label=""];
+29 -> 30  [class="", key=NONE, label=""];
+30 -> "-1"  [class="", key=NONE, label=""];
+32 -> 33  [class="", key=NONE, label=""];
+33 -> 30  [class="", key=NONE, label=""];
+36 -> 37  [class="", key=NONE, label=""];
+37 -> 30  [class="", key=NONE, label=""];
+40 -> 41  [class="", key=NONE, label=""];
+41 -> 30  [class="", key=NONE, label=""];
+44 -> 45  [class="", key=NONE, label=""];
+45 -> 30  [class="", key=NONE, label=""];
+47 -> 1  [class="", key=0];
+48 -> 3  [class="", key=0];
+49 -> 6  [class="", key=0];
+50 -> 23  [class="", key=0];
+51 -> 2  [class="", key=0];
+52 -> "-1"  [class="", key=0];
+53 -> 4  [class="", key=0];
+54 -> "-1"  [class="", key=0];
+55 -> 7  [class="", key=0];
+56 -> 10  [class="", key=0];
+57 -> 13  [class="", key=0];
+58 -> 16  [class="", key=0];
+59 -> 19  [class="", key=0];
+60 -> 21  [class="", key=0];
+61 -> 8  [class="", key=0];
+62 -> "-1"  [class="", key=0];
+63 -> 11  [class="", key=0];
+64 -> "-1"  [class="", key=0];
+65 -> 14  [class="", key=0];
+66 -> "-1"  [class="", key=0];
+67 -> 17  [class="", key=0];
+68 -> "-1"  [class="", key=0];
+69 -> "-1"  [class="", key=0];
+70 -> "-1"  [class="", key=0];
+71 -> 26  [class="", key=0];
+}
+`;
+    drawGraph(graph);
+  } else {
+    serveGraph();
+  }
+
+
+</script>
+</body>
+</html>

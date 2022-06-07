@@ -149,6 +149,7 @@ nlu:
 
   - intent: add_event
     examples: |
+      - i want to add an event
       - add an event for starting tomorrow at 10am and ending tomorrow at 11am
       - insert a new event for next monday
       - create a new meeting for friday at 2pm
@@ -157,6 +158,8 @@ nlu:
 
   - intent: get_event
     examples: |
+      - what events do i have
+      - get me my events
       - get me my schedule for 10am today
       - I want to get my schedule at 8 am today 
       - what are my schedule timings at 10 am ?
@@ -164,6 +167,8 @@ nlu:
 
   - intent: update_event 
     examples: |
+      - update events
+      - i want to update an event
       - modify my meeting at 10am 
       - I want to update my schedule 
       - update my schedule for me 
@@ -172,6 +177,8 @@ nlu:
 
   - intent: delete_event 
     examples: |
+      - i want to delete an event
+      - delete events
       - cancel my meeting at 12pm 
       - cancel all my meetings 
       - delete my schedule for the day 

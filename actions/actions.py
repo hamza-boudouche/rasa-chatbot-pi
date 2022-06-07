@@ -18,6 +18,7 @@ class ActionConfirmAddEvent(Action):
         dispatcher.utter_message(
             text="you are about to start the procedure to add an event, do you want to continue?")
 
+
 class ActionConfirmUpdateEvent(Action):
 
     def name(self) -> Text:
@@ -28,6 +29,7 @@ class ActionConfirmUpdateEvent(Action):
 
         dispatcher.utter_message(
             text="you are about to start the procedure to update an event, do you want to continue?")
+
 
 class ActionConfirmGetEvent(Action):
 
@@ -40,6 +42,7 @@ class ActionConfirmGetEvent(Action):
         dispatcher.utter_message(
             text="you are about to start the procedure to get an event, do you want to continue?")
 
+
 class ActionConfirmDeleteEvent(Action):
 
     def name(self) -> Text:
@@ -50,6 +53,7 @@ class ActionConfirmDeleteEvent(Action):
 
         dispatcher.utter_message(
             text="you are about to start the procedure to delete an event, do you want to continue?")
+
 
 class ActionConfirmAddTask(Action):
 
@@ -62,6 +66,7 @@ class ActionConfirmAddTask(Action):
         dispatcher.utter_message(
             text="you are about to start the procedure to add a task, do you want to continue?")
 
+
 class ActionConfirmRemoveTask(Action):
 
     def name(self) -> Text:
@@ -73,6 +78,7 @@ class ActionConfirmRemoveTask(Action):
         dispatcher.utter_message(
             text="you are about to start the procedure to remove a task, do you want to continue?")
 
+
 class ActionConfirmUpdateTask(Action):
 
     def name(self) -> Text:
@@ -83,6 +89,7 @@ class ActionConfirmUpdateTask(Action):
 
         dispatcher.utter_message(
             text="you are about to start the procedure to update a task, do you want to continue?")
+
 
 class ActionConfirmMoveTask(Action):
 
@@ -107,6 +114,7 @@ class ActionAddEvent(Action):
         dispatcher.utter_message(json_message={"formtype": "add_event"})
         return []
 
+
 class ActionGetEvent(Action):
 
     def name(self) -> Text:
@@ -115,7 +123,7 @@ class ActionGetEvent(Action):
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         print("getting event")
         dispatcher.utter_message(text="getting event")
-        dispatcher.utter_message(json_message={"formtype": "get-event"})
+        dispatcher.utter_message(json_message={"formtype": "get_event"})
         return []
 
 
@@ -129,6 +137,7 @@ class ActionUpdateEvent(Action):
         dispatcher.utter_message(text="updating event")
         dispatcher.utter_message(json_message={"formtype": "update_event"})
         return []
+
 
 class ActionDeleteEvent(Action):
 
@@ -150,7 +159,7 @@ class ActionAddTask(Action):
         print("adding task")
         dispatcher.utter_message(text="adding task")
         dispatcher.utter_message(json_message={"formtype": "add_task"})
-        return []  
+        return []
 
 
 class ActionRemoveTask(Action):
@@ -160,8 +169,9 @@ class ActionRemoveTask(Action):
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         print("removing task")
         dispatcher.utter_message(text="removing task")
-        dispatcher.utter_message(json_message={"formtype": "remove_task"}) 
-        return [] 
+        dispatcher.utter_message(json_message={"formtype": "remove_task"})
+        return []
+
 
 class ActionMoveTask(Action):
     def name(self) -> Text:
@@ -171,7 +181,8 @@ class ActionMoveTask(Action):
         print("moving task")
         dispatcher.utter_message(text="moving task")
         dispatcher.utter_message(json_message={"formtype": "move_task"})
-        return [] 
+        return []
+
 
 class ActionUpdateTask(Action):
     def name(self) -> Text:
@@ -181,7 +192,8 @@ class ActionUpdateTask(Action):
         print("update task")
         dispatcher.utter_message(text="updating task")
         dispatcher.utter_message(json_message={"formtype": "update_task"})
-        return [] 
+        return []
+
 
 class ActionResetAllSlots(Action):
 
@@ -189,4 +201,4 @@ class ActionResetAllSlots(Action):
         return "action_reset_all_slots"
 
     def run(self, dispatcher, tracker, domain):
-         return [AllSlotsReset()]
+        return [AllSlotsReset()]
