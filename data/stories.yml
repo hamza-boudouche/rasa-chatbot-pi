@@ -50,6 +50,7 @@ stories:
   - action : action_add_task
   - action : utter_affirm_add_task 
   - intent : affirm 
+  - action: action_restart
 
 - story: remove_task_front 
   steps : 
@@ -57,6 +58,7 @@ stories:
   - action : action_remove_task
   - action : utter_affirm_removed_task 
   - intent : affirm 
+  - action: action_restart
 
 
 - story: update_task_front 
@@ -66,6 +68,7 @@ stories:
   - intent : affirm
   - action : action_update_task
   - intent : affirm 
+  - action: action_restart
 
 - story: move_task_front
   steps:
@@ -75,6 +78,7 @@ stories:
   - action : action_move_task
   - action : utter_affirm_move_task
   - intent : affirm 
+  - action: action_restart
 
 
 
@@ -83,10 +87,11 @@ stories:
   - intent: greet 
   - action: utter_greet
   - intent: add_event
-  - action: action_confirm_add_event
-  - intent: affirm
+  # - action: action_confirm_add_event
+  # - intent: affirm
   - action: action_add_event
   - intent: affirm
+  - action: action_restart
 
 - story: get_event_front
   steps : 
@@ -97,6 +102,7 @@ stories:
   - intent: affirm
   - action: action_get_event
   - intent: affirm
+  - action: action_restart
 
 - story: update_event_front
   steps : 
@@ -107,6 +113,7 @@ stories:
   - intent: affirm
   - action: action_update_event
   - intent: affirm
+  - action: action_restart
 
 - story: delete_event_front
   steps : 
@@ -117,6 +124,7 @@ stories:
   - intent: affirm
   - action: action_delete_event
   - intent: affirm
+  - action: action_restart
 
 
 

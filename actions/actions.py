@@ -3,6 +3,7 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import AllSlotsReset
+from rasa_sdk.events import Restarted
 
 from communication import send
 
@@ -190,3 +191,15 @@ class ActionResetAllSlots(Action):
 
     def run(self, dispatcher, tracker, domain):
          return [AllSlotsReset()]
+        
+
+
+
+class ActionRestarted(Action):
+     """ This is for restarting the chat"""
+
+     def name(self):
+        return "action_restart"
+
+     def run(self, dispatcher, tracker, domain):
+        return [Restarted()]

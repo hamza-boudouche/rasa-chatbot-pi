@@ -1,0 +1,52 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-board",
+      "2": "I-board",
+      "3": "L-board",
+      "4": "U-board",
+      "5": "B-card",
+      "6": "I-card",
+      "7": "L-card",
+      "8": "U-card",
+      "9": "B-employee",
+      "10": "I-employee",
+      "11": "L-employee",
+      "12": "U-employee",
+      "13": "B-list",
+      "14": "I-list",
+      "15": "L-list",
+      "16": "U-list",
+      "17": "B-stocks",
+      "18": "I-stocks",
+      "19": "L-stocks",
+      "20": "U-stocks",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-board": 1,
+      "I-board": 2,
+      "L-board": 3,
+      "U-board": 4,
+      "B-card": 5,
+      "I-card": 6,
+      "L-card": 7,
+      "U-card": 8,
+      "B-employee": 9,
+      "I-employee": 10,
+      "L-employee": 11,
+      "U-employee": 12,
+      "B-list": 13,
+      "I-list": 14,
+      "L-list": 15,
+      "U-list": 16,
+      "B-stocks": 17,
+      "I-stocks": 18,
+      "L-stocks": 19,
+      "U-stocks": 20,
+      "O": 0
+    },
+    "num_tags": 21
+  }
+]

@@ -212,6 +212,7 @@ actions:
   - action_update_event
   - action_delete_event
   - action_get_event
+  - action_restart
 
 session_config:
   session_expiration_time: 60
