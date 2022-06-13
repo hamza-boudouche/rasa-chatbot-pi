@@ -47,6 +47,8 @@ stories:
   - intent : greet
   - action : utter_greet
   - intent : add_task
+  - action: action_confirm_add_task
+  - intent: affirm
   - action : action_add_task
   - action : utter_affirm_add_task 
   - intent : affirm 
@@ -55,6 +57,8 @@ stories:
 - story: remove_task_front 
   steps : 
   - intent : remove_task
+  - action : action_confirm_remove_task
+  - intent : affirm
   - action : action_remove_task
   - action : utter_affirm_removed_task 
   - intent : affirm 
